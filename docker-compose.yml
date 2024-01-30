@@ -12,17 +12,22 @@ services:
     stdin_open: true
     restart: unless-stopped
     volumes:
-     - ./scripts:/home/steam/scripts
-     - ./config:/home/steam/Steam/steamapps/common/PalServer/Pal/Saved/Config/LinuxServer
-    entrypoint: [ 
-      "/home/steam/Steam/steamapps/common/PalServer/PalServer.sh", 
-      "--port", 
-      "8211", 
-      "--players", 
-      "16", 
-      "--useperfthreads",
+     - ./scripts/:/home/steam/scripts/
+     - ./data/Saved:/home/steam/Steam/steamapps/common/PalServer/Pal/Saved
+    entrypoint: [
+      "/home/steam/Steam/steamapps/common/PalServer/Pal/Binaries/Linux/PalServer-Linux-Test",
+      "Pal",
+      "-port=8211",
+      "-players=16",
+      "-useperfthreads",
       "-NoAsyncLoadingThread",
-      "-UseMultithreadForDS"
+      "-UseMultithreadForDS",
+      "-publicip=127.0.0.1",
+      "-publicport=8211",
+      #"EpicApp=PalServer",
+      "-servername=Palworld Server",
+      "-serverpassword=secure-password",
+      "-adminpassword=admin-password"
     ]
 volumes:
   pwserver_data:

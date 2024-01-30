@@ -5,6 +5,6 @@ LABEL maintainer="rizki.k@pm.me"
 COPY scripts /home/steam/scripts
 
 RUN set -x \
-  && steamcmd +runscript /home/steam/scripts/update_palworld.txt
+  && /home/steam/steamcmd/steamcmd.sh +runscript /home/steam/scripts/update_palworld.txt
 
-EXPOSE 16261 16262 16263
+EXPOSE 8211
